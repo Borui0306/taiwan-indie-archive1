@@ -1,0 +1,384 @@
+:root {
+  --bg-paper: #f4f1ea;
+  --bg-card: #ffffff;
+  --ink-black: #18181b;
+  --accent-orange: #e14d2a;
+  --accent-yellow: #eab308;
+  --border-thick: 2px solid var(--ink-black);
+  --shadow-hard: 4px 4px 0px var(--ink-black);
+  --shadow-hard-lg: 8px 8px 0px var(--ink-black);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-paper);
+  background-image: radial-gradient(rgba(24, 24, 27, 0.08) 1px, transparent 0);
+  background-size: 20px 20px;
+  color: var(--ink-black);
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header 刊頭設計 */
+.site-header {
+  border-bottom: var(--border-thick);
+  background-color: var(--bg-card);
+  padding: 2.5rem 1.5rem;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.issue-badge {
+  display: inline-block;
+  background-color: var(--ink-black);
+  color: var(--bg-paper);
+  font-family: monospace;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.site-header h1 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.subtitle {
+  margin-top: 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #3f3f46;
+}
+
+/* 篩選列 */
+.filter-bar {
+  max-width: 1200px;
+  width: 100%;
+  margin: 2rem auto 0;
+  padding: 0 1.5rem;
+}
+
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.filter-btn {
+  background-color: var(--bg-card);
+  color: var(--ink-black);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-hard);
+  padding: 0.5rem 1.1rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.12s ease;
+}
+
+.filter-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--ink-black);
+}
+
+.filter-btn.active {
+  background-color: var(--accent-yellow);
+}
+
+/* 卡片網格：桌機 3 欄、平板 2 欄、手機 1 欄 */
+.card-grid {
+  max-width: 1200px;
+  width: 100%;
+  margin: 2rem auto 4rem;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  flex: 1;
+}
+
+@media (max-width: 960px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 單張圖鑑卡片 */
+.archive-card {
+  background-color: var(--bg-card);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-hard);
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  overflow: hidden;
+}
+
+.archive-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0px var(--ink-black);
+}
+
+.card-banner {
+  padding: 1rem 1.25rem;
+  border-bottom: var(--border-thick);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+
+.type-pill {
+  background-color: var(--bg-card);
+  color: var(--ink-black);
+  border: 2px solid var(--ink-black);
+  padding: 0.15rem 0.6rem;
+}
+
+.meta-year {
+  font-family: monospace;
+  font-size: 0.9rem;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 0.1rem 0.45rem;
+  border: 1.5px solid var(--ink-black);
+}
+
+.card-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-title {
+  font-size: 1.45rem;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.card-en {
+  font-family: monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #52525b;
+  margin-bottom: 0.85rem;
+}
+
+/* 音樂祭當年度舉辦日期徽章 */
+.event-date-badge {
+  display: inline-block;
+  align-self: flex-start;
+  background-color: var(--accent-yellow);
+  color: var(--ink-black);
+  border: 1.5px solid var(--ink-black);
+  font-family: monospace;
+  font-size: 0.85rem;
+  font-weight: 800;
+  padding: 0.2rem 0.6rem;
+  margin-bottom: 0.85rem;
+}
+
+.card-oneliner {
+  font-weight: 700;
+  font-size: 0.98rem;
+  background-color: var(--bg-paper);
+  border-left: 4px solid var(--ink-black);
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.genre-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: auto;
+  padding-top: 0.75rem;
+}
+
+.genre-tag {
+  font-size: 0.8rem;
+  font-weight: 700;
+  border: 1.5px solid var(--ink-black);
+  padding: 0.15rem 0.55rem;
+  background-color: #fafafa;
+}
+
+.card-footer {
+  border-top: var(--border-thick);
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  font-weight: 800;
+  background-color: #fafaf9;
+}
+
+/* 海報風格詳情彈窗 Modal */
+.detail-modal {
+  margin: auto;
+  border: 3px solid var(--ink-black);
+  box-shadow: var(--shadow-hard-lg);
+  background-color: var(--bg-card);
+  color: var(--ink-black);
+  max-width: 640px;
+  width: calc(100% - 2rem);
+  padding: 0;
+}
+
+.detail-modal::backdrop {
+  background-color: rgba(24, 24, 27, 0.7);
+  backdrop-filter: blur(2px);
+}
+
+.modal-header {
+  padding: 1.5rem;
+  border-bottom: 3px solid var(--ink-black);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.modal-header-info h2 {
+  font-size: 1.85rem;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-top: 0.4rem;
+}
+
+.modal-en {
+  font-family: monospace;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-top: 0.2rem;
+}
+
+.close-btn {
+  background-color: var(--bg-card);
+  color: var(--ink-black);
+  border: var(--border-thick);
+  box-shadow: 3px 3px 0px var(--ink-black);
+  font-weight: 900;
+  font-size: 1rem;
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.close-btn:hover {
+  background-color: var(--accent-orange);
+  color: #ffffff;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.modal-meta-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 2px dashed var(--ink-black);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.modal-oneliner {
+  font-size: 1.1rem;
+  font-weight: 800;
+  background-color: var(--accent-yellow);
+  border: var(--border-thick);
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.modal-desc {
+  font-size: 1rem;
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+}
+
+.highlight-box {
+  background-color: var(--bg-paper);
+  border: var(--border-thick);
+  padding: 1.1rem 1.25rem;
+}
+
+.highlight-box h3 {
+  font-size: 1rem;
+  font-weight: 900;
+  margin-bottom: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.highlight-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.highlight-list li {
+  font-weight: 700;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.highlight-list li::before {
+  content: "▶";
+  position: absolute;
+  left: 0;
+  font-size: 0.8rem;
+  color: var(--accent-orange);
+}
+
+/* 樂團歌曲純文字連結樣式（無額外標籤） */
+.yt-song-link {
+  color: var(--ink-black);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.yt-song-link:hover {
+  color: var(--accent-orange);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Footer */
+.site-footer {
+  border-top: var(--border-thick);
+  background-color: var(--ink-black);
+  color: var(--bg-paper);
+  text-align: center;
+  padding: 1.25rem;
+  font-family: monospace;
+  font-size: 0.85rem;
+}
